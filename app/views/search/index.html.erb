@@ -1,0 +1,74 @@
+<section class="search">
+  <div class="overlay"></div>
+
+  <div class="filter-content">
+    <h1> Busca y encuentra tu vivienda ya sea para <br> Arrendar o Comprar.</h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, facilis.</h2>
+    <div class="Search-head">
+      <%= search_form_for @search do |s| %>
+
+        <section class="filter">
+          <div class="field">
+            <%= s.label :title, "Title:" %>
+            <%= s.text_field :title_cont %>
+          </div>
+          <div class="field">
+            
+          </div>
+          <div class="filter_price" ng-controller="MainController">
+            <label>Precio: De <span class="from" id="from"></span>Hasta <span class="to" id="to"></span></label>
+            <div class="range" data-min="50000" data-max="9999999" data-step="50000">
+                <%= s.hidden_field :price_gteq, value: "100000" %>
+                <%= s.hidden_field :price_lteq, value: "5000000"  %>
+                <div class="slider" data-name="q[price_lteq]" data-value="5000000" tabindex="0" style="left: 49.7487%;"></div>
+<div class="slider" data-name="q[price_gteq]" data-value="100000" tabindex="0" style="left: 0.502513%;"></div>
+            </div>
+             <div id="log"></div>
+          </div>  
+        </section> 
+        <div class="actions"><%= s.submit "Search", class: "btn big blue" %></div>
+      <% end %>
+    </div>  
+  </div>  
+
+</section>
+
+<div class="order">
+  <div class="wrapper">
+    <%= sort_link @search, :price, "Precio" %>
+    <%= sort_link @search, :date, "Fecha" %>
+  </div>  
+</div> 
+
+<div class="wrapper"> 
+  <section class="properties propertycreated">
+    <% @property.each do |property| %>
+      <div class="property">
+        <%= link_to  property do %> <%= property.title %> <% end %>  
+        <div class="image" style="background:url('<%= property.image.url(:medium) %>')"></div>
+        <%#= property.user_id %>
+        <h4><%= property.price %></h4>
+        <div class="info">
+            <span>Area: <strong><%= property.area %></strong></span>
+            <span>Lugar: <strong><%= property.location %></strong></span>
+            <span>Divisiones: <strong><%= property.room %></strong></span>
+            <span>Fecha: <strong><%= property.date %></strong></span>
+        </div>     
+      </div>
+    <% end %>
+  </section>  
+</div>    
+ <script>
+        // var logEl = document.getElementById('log');
+        // document.body.addEventListener('change', function(e) {
+            
+        //     logEl.innerText = [
+        //         'Changed ',
+        //         e.target.getAttribute('data-name'),
+        //         ' to ',
+        //         e.target.getAttribute('data-value')
+        //     ].join('');
+            
+        // });
+</script>
+  

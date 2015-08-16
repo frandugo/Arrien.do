@@ -1,0 +1,14 @@
+<div class="detail">  
+  <p id="notice"><%= notice %></p>
+    <h1><%= link_to 'Back', properties_path %><%= @property.title %></h1>
+    <div class="image" style="background:url('<%= @property.image.url(:bg) %>')"></div>
+    <%#= property.user_id %>
+    <h4><%= @property.price %></h4>
+    <div class="info">
+      <span>Area: <strong><%= @property.area %></strong></span>
+      <span>Lugar: <strong><%= @property.city %></strong></span>
+      <span>Divisiones: <strong><%= @property.room %></strong></span>
+      <span>Fecha: <strong><%= @property.date %></strong></span>
+    </div> 
+</div>     
+

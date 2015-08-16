@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <section class="properties pt80">
+    <div>
+      <% @properties.each do |property| %>
+        <div class="property">
+          <%= link_to  property do %> <%= property.title %> <% end %>  
+          <div class="image" style="background:url('<%= property.image.url(:medium) %>')"></div>
+          <%#= property.user_id %>
+          <h4><%= property.price %></h4>
+          <div class="info">
+              <span>Area: <strong><%= property.area %></strong></span>
+              <span>Lugar: <strong><%= property.location %></strong></span>
+              <span>Divisiones: <strong><%= property.room %></strong></span>
+              <span>Fecha: <strong><%= property.date %></strong></span>
+          </div> 
+        </div>
+      <% end %>
+    </div>  
+  </section>  
+</div>    

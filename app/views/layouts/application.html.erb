@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arriendo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body ng-app="Property">
+	<header>
+		<div class="wrapper">
+			<h1 class="logo"><%= link_to "Find Home", search_index_path %></h1>
+			<ul>
+		      <% if user_signed_in? %>
+		      	<li><%= link_to "Search", root_path %></li>
+		  		<li>
+		  			<%= link_to dashboard_index_path do %>
+		  				<span>Propiedades</span>
+		  				<strong><%= current_user.properties.count(:all) %></strong>
+					<% end %>
+		  		</li>
+		  		<li><a href="#" class="icon">Mensajes</a></li>
+
+		        <li class="usermail">
+					<%= link_to edit_user_registration_path  do %>
+						<span><%= current_user.name %></span>
+					  	<div class="image"> <%= image_tag current_user.avatar.url(:thumb) %></div>
+					<% end %>
+				</li>
+
+		  		<li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
+		      <% else %>
+		        <li><%= link_to "Sign up", new_user_registration_path %></li>
+		        <li><%= link_to "Login", new_user_session_path %></li>
+		      <% end %> 
+			</ul>
+		</div>		
+	</header>
+
+<%= yield() %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>

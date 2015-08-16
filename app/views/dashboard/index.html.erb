@@ -1,0 +1,28 @@
+<section class="properties pt80">
+  <div class="wrapper">
+    <div class="headerbuttons">
+      <%= link_to "Nueva Propidad", new_property_path , class: "btn big blue mb20"%>
+    </div> 
+    <div class="all">
+      <% @user.each do |property| %>
+        <div class="property">
+          <h1><%= property.title %></h1>
+          <div class="image" style="background:url('<%= property.image.url(:medium) %>')"></div>
+          <%#= property.user_id %>
+          <h4><%= property.price %></h4>
+          <div class="info">
+              <span>Area: <strong><%= property.area %></strong></span>
+              <span>Lugar: <strong><%= property.location %></strong></span>
+              <span>Divisiones: <strong><%= property.room %></strong></span>
+              <span>Fecha: <strong><%= property.date %></strong></span>
+          </div> 
+           <div class="actions">   
+              <%= link_to 'Show', property %>
+              <%= link_to 'Edit', edit_property_path(property) %>
+              <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>  
+      <% end %>
+    </div>    
+  </div>  
+</section>

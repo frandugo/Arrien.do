@@ -1,0 +1,39 @@
+
+// var rangel = document.getElementById('from');
+// document.body.q_price_gteq.addEventListener('change', function(e) {
+    
+//     rangel.innerText = [ e.target.getAttribute('value') ];
+    
+// });
+
+
+function sizeheader() {
+	windowHeight = $(window).height();
+	windowWidth = $(window).width();
+	$('section.search').css('height', parseInt((windowHeight - 75)));
+	$('section.search .overlay').css('height', parseInt((windowHeight - 75)));
+	$('section.search .filter-content').css('padding-top','110px');
+
+	if (windowHeight <= 726) {
+ 		$("section.search").css("height", "610px");
+ 		$("section.search .filter-content").css("height", "610px");
+ 		$('section.search .filter-content').css('padding-top','110px');
+ 			
+ 	} else {
+ 		$('section.search').css('height', parseInt((windowHeight - 75)));
+		$('section.search .overlay').css('height', parseInt((windowHeight - 75)));
+		$('section.search .filter-content').css('padding-top','110px');
+ 	}
+};	
+
+jQuery(document).ready(function($) {
+	$("a[href=#]").click(function(event) {
+		event.preventDefault();
+	}); 
+});
+
+sizeheader();
+
+$(window).on("resize", function(){ 
+	sizeheader(); 
+});
